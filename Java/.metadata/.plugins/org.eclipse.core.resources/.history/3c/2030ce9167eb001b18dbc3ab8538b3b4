@@ -1,0 +1,56 @@
+//----------- IMPORTAÇÃO DA BIBLIOTECA DE SCANNER, QUE PERMITE A ENTRADA DE DADOS PELO CONSOLE COM JAVA ---------- //
+import java.util.Scanner;
+
+public class Program {
+	
+	public static void main(String[] args) {
+		//------------ DECLARAÇÃO DAS VARIÁVEIS DA CLASSE PROGRAM -----------//
+        String tipo, pagamento;  
+        double quantidade;
+        
+        Scanner input = new Scanner(System.in);
+        //-------- INSTÂNCIANDO OBJETO DA CLASSE POSTO_COMBUSTIVEL --------//
+        PostoCombustivel postoCombustivel = new PostoCombustivel();
+
+      //----------------------- INÍCIO DO PROGRAMA ---------------------//
+        System.out.println("========= POSTO DE COMBUSTÍVEL ========");
+        System.out.println("Preço por litro: \nGASOLINA = R$ 4,00\nÁLCOOL   = R$ 2,50");
+        System.out.println("---------------------------------------");
+        
+        System.out.println("Qual a quantidade desejada de combustível em litros?");
+        quantidade = input.nextDouble();
+        
+        
+        
+        System.out.println("Qual tipo de combustível deseja colocar ?");
+        System.out.println("Digite 'GASOLINA' ou 'ÁLCOOL': ");
+        tipo = input.next().toUpperCase();
+        
+        String combustivelInvalido = postoCombustivel.Abastecer(tipo, quantidade);
+        
+        while (combustivelInvalido == "parametroInvalido") {
+        	System.out.println("ERRO. O tipo de combustível digitado é INVALIDO.");
+        	System.out.println("Digite 'GASOLINA' ou 'ÁLCOOL': ");
+            tipo = input.next().toUpperCase();
+            combustivelInvalido = postoCombustivel.Abastecer(tipo, quantidade);   
+        }
+            
+        
+        
+        System.out.println("Como será feito o pagamento?");
+        System.out.println("Digite 'DINHEIRO' ou 'CARTÃO': ");
+        pagamento = input.next().toUpperCase();
+
+        String pagamentoInvalido = postoCombustivel.Pagamento(pagamento.toUpperCase());
+
+        while (pagamentoInvalido == "parametroInvalido") {
+        	System.out.println("ERRO. O tipo de pagamento é INVALIDO.");
+            System.out.println("Digite 'DINHEIRO' ou 'CARTÃO': ");
+            pagamento = input.next().toUpperCase();
+            pagamentoInvalido = postoCombustivel.Pagamento(pagamento.toUpperCase());
+        }    
+     
+        postoCombustivel.ResumoAbastecimento();
+	}
+        
+}

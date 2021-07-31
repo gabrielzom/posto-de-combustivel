@@ -1,0 +1,97 @@
+import java.text.DecimalFormat;
+
+//------- CLASSE POSTO_COMBUSTÍVEL ------//
+
+public class PostoCombustivel {
+	
+	DecimalFormat preco = new DecimalFormat("###,###.00");
+	DecimalFormat quantidade = new DecimalFormat("#,##0.00");
+	
+	public String tipoCombustivel;
+    public double quantidadeCombustivel;
+    public double precoCombustivel;
+    public String formaPagamento;
+    
+    /*
+    /------- CONSTRUTOR DA CLASSE POSTO_COMBUSTÍVEL ------ /
+    * NÃO PRECISO USAR NENHUMA VALIDAÇÃO DE DADOS, ENTÃO       
+    * POR ISSO CRIEI O MÉTODO CONSTRUTOR VAZIO.
+    */
+    
+    
+    public PostoCombustivel() 
+    { }
+    
+  //------- MÉTODOS DA CLASSE POSTO_COMBUSTÍVEL ------//
+    
+    public String Abastecer (String tipoCombustivel, double quantidadeCombustivel) {
+
+        if ((tipoCombustivel != "GASOLINA") && (tipoCombustivel != "ALCOOL") && (tipoCombustivel != "ÁLCOOL")) {
+           this.tipoCombustivel = "parametroInvalido";
+       }
+
+       else {
+
+           switch(tipoCombustivel)
+           {
+               case "GASOLINA":
+                   this.tipoCombustivel = "Gasolina";
+                   this.precoCombustivel = 4.00;
+                   break;
+
+               case "ÁLCOOL":
+                   this.tipoCombustivel = "Álcool";
+                   this.precoCombustivel = 2.50;
+                   break;
+
+               case "ALCOOL":
+                   this.tipoCombustivel = "Álcool";
+                   this.precoCombustivel = 2.50;
+                   break;
+           }
+       }
+
+       this.quantidadeCombustivel = quantidadeCombustivel;
+
+       return this.tipoCombustivel;
+   }
+
+
+
+   public String Pagamento (String formaPagamento) {
+
+       if ((formaPagamento != "DINHEIRO") && (formaPagamento != "CARTÃO") && (formaPagamento != "CARTAO")) {
+           this.formaPagamento = "parametroInvalido";
+       }
+
+       else {
+
+           switch(formaPagamento)
+
+           {
+               case "DINHEIRO":
+                   this.formaPagamento = "Dinheiro";
+                   break;
+               case "CARTÃO":
+                   this.formaPagamento = "Cartão";
+                   break;
+               case "CARTAO":
+                   this.formaPagamento = "Cartão";
+                   break;
+           }
+       }
+
+       return this.formaPagamento;
+   }
+   
+   public void ResumoAbastecimento () {
+
+       System.out.println("=============== RESUMO DO ABASTECIMENTO ===============");
+       System.out.println("Combustível abastecido: " + this.tipoCombustivel);
+       System.out.println("Quantidade abastecida: " + quantidade.format(this.quantidadeCombustivel) + " Litros");
+       System.out.println("Forma de pagamento: " + this.formaPagamento);
+       System.out.println("Total a pagar: " + preco.format(this.quantidadeCombustivel*this.precoCombustivel));
+   }
+}
+
+}

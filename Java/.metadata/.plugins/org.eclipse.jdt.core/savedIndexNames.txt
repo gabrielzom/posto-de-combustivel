@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+C:\Users\GABRIEL\Desktop\posto_de_combustivel-recode\Java\.metadata\.plugins\org.eclipse.jdt.core
+1642175237.index
+4155558870.index
